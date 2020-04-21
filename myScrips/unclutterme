@@ -1,0 +1,3 @@
+#! /bin/bash
+
+unclutter --timeout 7 -b --jitter 5 --ignore-scrolling
