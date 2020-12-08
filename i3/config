@@ -93,7 +93,7 @@ bindsym $super+Shift+Print --release exec --no-startup-id i3-scrot -s
 
 
 # kill focused window
-#bindsym $super+c kill
+bindsym $super+c kill
 bindsym $super+q kill
 
 # change focus
