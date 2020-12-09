@@ -58,7 +58,7 @@ bindsym $super+l exec i3lock -i /usr/share/wallpapers/garuda-wallpapers/garuda-w
 
 
 # common apps keybinds
-bindsym $super+F1 exec firefox;focus
+bindsym $super+F1 exec chromium;focus
 bindsym $super+F2 exec thunderbird;focus
 bindsym $super+F3 exec thunar;focus
 bindsym $super+F4 exec geany;focus
