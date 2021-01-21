@@ -210,7 +210,22 @@ nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
-" ######### Coc-extentions #############
+" ###### VimWiki #######
+" vim wiki settings 
+set nocompatible 
+filetype plugin on 
+let wiki = {'path': '~/vimwiki',
+           \ 'syntax': 'markdown', 'ext': '.md'} 
+let wiki.template_default = 'default' 
+let wiki.template_ext = '.html' 
+let wiki.nested_syntaxes = {'python': 'python', 'bash': 'sh', 'ts':'typescript'} 
+let g:vimwiki_list = [wiki] 
+
+
+" ######## IndentLinePlugIn ########
+let g:indentLine_char_list = ['▏','▏','▏','▏', '¦', '┆', '┊']
+
+" ####### Coc-extentions #######
 "let g:coc_global_extensions = [
       "\'coc-highlight',
       "\'coc-python',
@@ -228,7 +243,7 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
       "\'coc-prettier'
       "\]
 
-" ######### Coc-settings #######
+" ####### Coc-settings   #######
 "function! AuCocExplorerAutoOpen()
 "    let l:use_floating = 0
 "
@@ -350,24 +365,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" ###### VimWiki #######
-" vim wiki settings 
-set nocompatible 
-filetype plugin on 
-let wiki = {'path': '~/vimwiki',
-           \ 'syntax': 'markdown', 'ext': '.md'} 
-let wiki.template_default = 'default' 
-let wiki.template_ext = '.html' 
-let wiki.nested_syntaxes = {'python': 'python', 'bash': 'sh', 'ts':'typescript'} 
-let g:vimwiki_list = [wiki] 
-
-
-" ######## IndentLinePlugIn ########
-let g:indentLine_char_list = ['▏','▏','▏','▏', '¦', '┆', '┊']
-
-"##############################################################################
-"##  folding logic                                                            ##
-"##############################################################################
+" #######  folding logic ####### 
   augroup myFold 
     autocmd!
     autocmd BufWinLeave *.* mkview
@@ -375,11 +373,8 @@ let g:indentLine_char_list = ['▏','▏','▏','▏', '¦', '┆', '┊']
   augroup END
 
 
-"##############################################################################
-"##  folding logic                                                            ##
-"##############################################################################
 
-" ########## My Vim Functions
+" ######## My Vim Functions ########
   "source $HOME/.config/nvim/myVimScripts/MaximizeToggle.vim
   source $HOME/.config/nvim/myVimScripts/TrimWhitespace.vim
   source $HOME/.config/nvim/myVimScripts/ExeMacroOVR.vim
