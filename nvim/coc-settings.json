@@ -1,5 +1,12 @@
 // auto format
 {
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
@@ -17,11 +24,14 @@
     "c",
     "c++"
   ],
+  "tsserver.formatOnType": true,
+  "coc.preferences.formatOnType": true,
 
   //prettier
   "prettier.printWidth": 80,
   "prettier.jsxSingleQuote": true,
   "prettier.singleQuote": true,
+  "prettier.disableSuccessMessage": true,
 
   // snippets
   "snippets.userSnippetsDirectory": "~/.config/nivm/snips",
@@ -55,6 +65,14 @@
     "typescriptreact",
     "yml"
   ],
+
+  "languageserver": {
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    }
+  },
 
   "diagnostic.virtualText": true
 }

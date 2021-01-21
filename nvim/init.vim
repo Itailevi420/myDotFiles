@@ -41,6 +41,8 @@ set incsearch
 set termguicolors
 set scrolloff=8
 set cursorline
+set signcolumn=yes
+
 
 " ####### VimPlug Config #######
 " Install vim-plug if not found
@@ -74,8 +76,14 @@ Plug 'moll/vim-bbye'
 Plug 'szw/vim-maximizer' "Maximizes and restores the current window in Vim.
 Plug 'puremourning/vimspector' "vimspector - A multi language graphical debugger for Vim
 Plug 'vimwiki/vimwiki'         "my personal Wiki
+Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-sandwich'
 Plug 'andymass/vim-matchup'
+Plug 'pangloss/vim-javascript' " syntax highlight 
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql' 
 
 "themes
 Plug 'gruvbox-community/gruvbox'
@@ -226,38 +234,40 @@ let g:vimwiki_list = [wiki]
 let g:indentLine_char_list = ['▏','▏','▏','▏', '¦', '┆', '┊']
 
 " ####### Coc-extentions #######
-"let g:coc_global_extensions = [
+let g:coc_global_extensions = [
+      \ 'coc-explorer',
+      \ 'coc-vimlsp',
+      \ 'coc-spell-checker',
+      \ 'coc-emoji',
+      \ 'coc-tsserver',
+      \ 'coc-json', 
+      \ 'coc-html',
+      \ 'coc-clangd',
+      \ 'coc-sh',
+      \ 'coc-tag'
+      \ ]
+      
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
       "\'coc-highlight',
       "\'coc-python',
-      "\'coc-explorer',
-      "\'coc-json', 
       "\'coc-git',
       "\'coc-fish',
       "\'coc-css',
       "\'coc-marketplace',
-      "\'coc-html',
-      "\'coc-tsserver',
       "\'coc-syntax',
-      "\'coc-spell-checker',
       "\'coc-snippets',
-      "\'coc-prettier'
-      "\]
+
+
 
 " ####### Coc-settings   #######
-"function! AuCocExplorerAutoOpen()
-"    let l:use_floating = 0
-"
-"    " Auto-open explorer when there's no file to show.
-"    if @% == '' || @% == '.'
-"        if l:use_floating
-"            exe ':CocCommand explorer --position floating'
-"        else
-"            autocmd User CocExplorerOpenPost ++once exe ':only'
-"            exe ':CocCommand explorer'
-"        endif
-"    endif
-"endfunction
-"autocmd User CocNvimInit call AuCocExplorerAutoOpen()
+
+
 
 augroup CocExplorer
   autocmd!
@@ -354,16 +364,37 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
   inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
+
+  " Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " #######  folding logic ####### 
   augroup myFold 
@@ -373,7 +404,7 @@ endif
   augroup END
 
 
-
+  
 " ######## My Vim Functions ########
   "source $HOME/.config/nvim/myVimScripts/MaximizeToggle.vim
   source $HOME/.config/nvim/myVimScripts/TrimWhitespace.vim
