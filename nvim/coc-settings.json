@@ -1,0 +1,60 @@
+// auto format
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "css",
+    "less",
+    "scss",
+    "json",
+    "graphql",
+    "markdown",
+    "vue",
+    "yaml",
+    "html",
+    "c",
+    "c++"
+  ],
+
+  //prettier
+  "prettier.printWidth": 80,
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+
+  // snippets
+  "snippets.userSnippetsDirectory": "~/.config/nivm/snips",
+
+  // emmet
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+
+  //explorer
+  "explorer.previewAction.onHover": false,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.width": 30,
+
+  //cSpell
+  "cSpell.userWords": ["Flowbiz", "Nemo", "Nimo", "frontmatter"],
+  // Specify file types to spell check.
+  "cSpell.enabledLanguageIds": [
+    "csharp",
+    "gitcommit",
+    "vimwiki",
+    "go",
+    "vim",
+    "javascript",
+    "javascriptreact",
+    "markdown",
+    "php",
+    "plaintext",
+    "typescript",
+    "typescriptreact",
+    "yml"
+  ],
+
+  "diagnostic.virtualText": true
+}
