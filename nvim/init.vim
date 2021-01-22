@@ -114,6 +114,8 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 colorscheme gruvbox
 set background=dark
 
+let g:python3_host_prog='/usr/bin/python3'
+
 "####### General keymaps#######
 let mapleader = " "
 "let maplocalleader =";"
