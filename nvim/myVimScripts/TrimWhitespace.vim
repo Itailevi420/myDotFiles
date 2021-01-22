@@ -1,5 +1,6 @@
 " TrimWhitespace in definde files
 
+
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
@@ -8,6 +9,5 @@ endfun
 
 augroup TrimWhitespace
   autocmd!
-  
-  autocmd BufWritePre vim,bash,sh,fish,c,c++ :call TrimWhitespace()
+  autocmd BufWritePre *.* :call TrimWhitespace()
 augroup END

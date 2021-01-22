@@ -1,28 +1,27 @@
-"  
-"  
-"     _/_/_/    _/                _/      _/                              _/   
-"      _/    _/_/_/_/    _/_/_/          _/          _/_/    _/      _/        
-"     _/      _/      _/    _/  _/      _/        _/_/_/_/  _/      _/  _/     
-"    _/      _/      _/    _/  _/      _/        _/          _/  _/    _/      
-" _/_/_/      _/_/    _/_/_/  _/      _/_/_/_/    _/_/_/      _/      _/       
-"  
-"  
-"                       _________ _______  _______  _______ 
+"
+"
+"     _/_/_/    _/                _/      _/                              _/
+"      _/    _/_/_/_/    _/_/_/          _/          _/_/    _/      _/
+"     _/      _/      _/    _/  _/      _/        _/_/_/_/  _/      _/  _/
+"    _/      _/      _/    _/  _/      _/        _/          _/  _/    _/
+" _/_/_/      _/_/    _/_/_/  _/      _/_/_/_/    _/_/_/      _/      _/
+"
+"
+"                       _________ _______  _______  _______
 "              |\     /|\__   __/(       )(  ____ )(  ____ \
 "              | )   ( |   ) (   | () () || (    )|| (    \/
-"              | |   | |   | |   | || || || (____)|| |      
-"              ( (   ) )   | |   | |(_)| ||     __)| |      
-"               \ \_/ /    | |   | |   | || (\ (   | |      
+"              | |   | |   | |   | || || || (____)|| |
+"              ( (   ) )   | |   | |(_)| ||     __)| |
+"               \ \_/ /    | |   | |   | || (\ (   | |
 "                \   /  ___) (___| )   ( || ) \ \__| (____/\
 "                 \_/   \_______/|/     \||/   \__/(_______/
-"              
+"
 " ####### Sane settings  #######
 syntax on
 
 set shell=/bin/zsh
 let $SHELL = "/bin/zsh"
-"set guicursor=
-"set noshowmatch
+"set filetype=
 set mouse=a
 set hidden
 set noerrorbells
@@ -40,9 +39,8 @@ set undofile
 set incsearch
 set termguicolors
 set scrolloff=8
-set cursorline
 set signcolumn=yes
-
+set cursorline
 
 " ####### VimPlug Config #######
 " Install vim-plug if not found
@@ -52,7 +50,7 @@ silent !sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autolo
 endif
 
 " Run PlugInstall if there are missing plugins
-augroup myPlug 
+augroup myPlug
   autocmd!
   autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
@@ -79,18 +77,17 @@ Plug 'vimwiki/vimwiki'         "my personal Wiki
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-sandwich'
 Plug 'andymass/vim-matchup'
-Plug 'pangloss/vim-javascript' " syntax highlight 
+Plug 'pangloss/vim-javascript' " syntax highlight
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jparise/vim-graphql' 
+Plug 'jparise/vim-graphql'
 
 "themes
-Plug 'gruvbox-community/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
 call plug#end()
 
 " ####### SomeSettings   #######
@@ -103,7 +100,7 @@ set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=200
+set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -113,7 +110,13 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 colorscheme gruvbox
 set background=dark
+highlight CursorLine ctermbg=Black ctermfg=none guibg=#161617 guifg=none
 
+augroup myCursorLine
+  autocmd!
+  autocmd InsertEnter * highlight CursorLine ctermbg=Black ctermfg=none guibg=#0e0e0f guifg=none
+  autocmd InsertLeave * highlight CursorLine ctermbg=Black ctermfg=none guibg=#161617 guifg=none
+augroup END
 let g:python3_host_prog='/usr/bin/python3'
 
 "####### General keymaps#######
@@ -139,7 +142,7 @@ inoremap <C-c> <esc>
 
 " ####### plugin conf    #######
 
-" match-up should automatically disable matchit and matchparen, but if you 
+" match-up should automatically disable matchit and matchparen, but if you
 " are still having trouble, try placing this near the top of your vimrc:
 let g:loaded_matchit = 1
 
@@ -147,13 +150,13 @@ let g:loaded_matchit = 1
 nnoremap <silent><Leader>z :MaximizerToggle!<CR>
 
 "####### Bbye PlugIn ########
-"Bbye allows you to do delete buffers (close files) without closing your 
+"Bbye allows you to do delete buffers (close files) without closing your
 "windows or messing up your layout.
 nnoremap <Leader>q :Bdelete<CR>
 "Buffer delete vs wipeout
-"Vim has two commands for closing a buffer: :bdelete and :bwipeout. 
-"The former removes the file from the buffer list, clears its options, 
-"variables and mappings. However, it remains in the jumplist, 
+"Vim has two commands for closing a buffer: :bdelete and :bwipeout.
+"The former removes the file from the buffer list, clears its options,
+"variables and mappings. However, it remains in the jumplist,
 "so Ctrl-o takes you back and reopens the file. If that's not what you want,
 "use :bwipeout or Bbye's equivalent :Bwipeout where you would've used :bdelete.
 nnoremap <Leader>q! :Bwipeout<CR>
@@ -221,15 +224,15 @@ nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
 nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 " ###### VimWiki #######
-" vim wiki settings 
-set nocompatible 
-filetype plugin on 
+" vim wiki settings
+set nocompatible
+filetype plugin on
 let wiki = {'path': '~/vimwiki',
-           \ 'syntax': 'markdown', 'ext': '.md'} 
-let wiki.template_default = 'default' 
-let wiki.template_ext = '.html' 
-let wiki.nested_syntaxes = {'python': 'python', 'bash': 'sh', 'ts':'typescript'} 
-let g:vimwiki_list = [wiki] 
+           \ 'syntax': 'markdown', 'ext': '.md'}
+let wiki.template_default = 'default'
+let wiki.template_ext = '.html'
+let wiki.nested_syntaxes = {'python': 'python', 'bash': 'sh', 'ts':'typescript'}
+let g:vimwiki_list = [wiki]
 
 
 " ######## IndentLinePlugIn ########
@@ -242,13 +245,13 @@ let g:coc_global_extensions = [
       \ 'coc-spell-checker',
       \ 'coc-emoji',
       \ 'coc-tsserver',
-      \ 'coc-json', 
+      \ 'coc-json',
       \ 'coc-html',
       \ 'coc-clangd',
       \ 'coc-sh',
       \ 'coc-tag'
       \ ]
-      
+
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
 endif
@@ -398,15 +401,15 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" #######  folding logic ####### 
-  augroup myFold 
+" #######  folding logic #######
+  augroup myFold
     autocmd!
     autocmd BufWinLeave *.* mkview
-    autocmd BufWinEnter *.* silent loadview
+    autocmd BufWinEnter *.* silent! loadview
   augroup END
 
 
-  
+
 " ######## My Vim Functions ########
   "source $HOME/.config/nvim/myVimScripts/MaximizeToggle.vim
   source $HOME/.config/nvim/myVimScripts/TrimWhitespace.vim
