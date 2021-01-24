@@ -38,6 +38,7 @@ set termguicolors
 set scrolloff=8
 set signcolumn=yes
 set cursorline
+set viminfo='1000
 
 " ####### VimPlug Config #######
 " Install vim-plug if not found
@@ -114,7 +115,7 @@ augroup myCursorLine
   autocmd InsertEnter * highlight CursorLine ctermbg=Black ctermfg=none guibg=#0e0e0f guifg=none
   autocmd InsertLeave * highlight CursorLine ctermbg=Black ctermfg=none guibg=#161617 guifg=none
 augroup END
-let g:python2_host_prog='/usr/bin/python2'
+
 let g:python3_host_prog='/usr/bin/python3'
 
 let g:airline_theme='dark'
@@ -218,7 +219,6 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 " ###### VimWiki #######
 " vim wiki settings
-set nocompatible
 filetype plugin on
 let wiki = {'path': '~/vimwiki',
            \ 'syntax': 'markdown', 'ext': '.md'}
@@ -260,7 +260,6 @@ endif
       "\'coc-marketplace',
       "\'coc-syntax',
       "\'coc-snippets',
-
 
 
 " ####### Coc-settings   #######
@@ -332,9 +331,8 @@ nnoremap <leader>p :Prettier<CR>
   nmap <leader>g] <Plug>(coc-diagnostic-next)
   nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev)
   nmap <silent> <leader>gn <Plug>(coc-diagnostic-next)
-  nnoremap <leader>cr :CocRestart
-u
-"" Coc explorer
+
+" Coc explorer
 nnoremap <leader>e :CocCommand explorer<CR>
 
 
@@ -352,7 +350,10 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup cursorHighlight
+  autocmd!
+  autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 
 
 " Symbol renaming.
@@ -425,9 +426,9 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " ######## My Vim Functions ########
   "source $HOME/.config/nvim/myVimScripts/MaximizeToggle.vim
-  source $HOME/.config/nvim/myVimScripts/TrimWhitespace.vim
-  source $HOME/.config/nvim/myVimScripts/ExeMacroOVR.vim
-  source $HOME/.config/nvim/myVimScripts/WinMove.vim
-  source $HOME/.config/nvim/myVimScripts/myTerminal.vim
-  source $HOME/.config/nvim/myVimScripts/pdfPreview.vim
+  source $HOME/myDotFiles/nvim/myVimScripts/TrimWhitespace.vim
+  source $HOME/myDotFiles/nvim/myVimScripts/ExeMacroOVR.vim
+  source $HOME/myDotFiles/nvim/myVimScripts/WinMove.vim
+  source $HOME/myDotFiles/nvim/myVimScripts/myTerminal.vim
+  source $HOME/myDotFiles/nvim/myVimScripts/pdfPreview.vim
 
