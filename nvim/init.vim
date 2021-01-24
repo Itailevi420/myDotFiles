@@ -65,8 +65,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
-Plug 'Yggdroot/indentLine'
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/goyo.vim'
 Plug 'moll/vim-bbye'
