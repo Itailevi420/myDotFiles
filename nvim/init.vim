@@ -7,14 +7,11 @@
 " _/_/_/      _/_/    _/_/_/  _/      _/_/_/_/    _/_/_/      _/      _/
 "
 "
-"                       _________ _______  _______  _______
-"              |\     /|\__   __/(       )(  ____ )(  ____ \
-"              | )   ( |   ) (   | () () || (    )|| (    \/
-"              | |   | |   | |   | || || || (____)|| |
-"              ( (   ) )   | |   | |(_)| ||     __)| |
-"               \ \_/ /    | |   | |   | || (\ (   | |
-"                \   /  ___) (___| )   ( || ) \ \__| (____/\
-"                 \_/   \_______/|/     \||/   \__/(_______/
+"                           _       _ __        _
+"                          (_)___  (_) /__   __(_)___ ___
+"                         / / __ \/ / __/ | / / / __ `__ \
+"                        / / / / / / /__| |/ / / / / / / /
+"                       /_/_/ /_/_/\__(_)___/_/_/ /_/ /_/
 "
 " ####### Sane settings  #######
 syntax on
@@ -117,7 +114,10 @@ augroup myCursorLine
   autocmd InsertEnter * highlight CursorLine ctermbg=Black ctermfg=none guibg=#0e0e0f guifg=none
   autocmd InsertLeave * highlight CursorLine ctermbg=Black ctermfg=none guibg=#161617 guifg=none
 augroup END
+let g:python2_host_prog='/usr/bin/python2'
 let g:python3_host_prog='/usr/bin/python3'
+
+let g:airline_theme='dark'
 
 "####### General keymaps#######
 let mapleader = " "
