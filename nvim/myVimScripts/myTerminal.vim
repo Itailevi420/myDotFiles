@@ -9,7 +9,7 @@ function! OpenTerminal()
   resize 10
 endfunction
 
-" open terminal on ctrl+n
+" open terminal on ctrl+t
 nnoremap <C-t> :call OpenTerminal()<CR>
 inoremap <C-t> <Esc>:call OpenTerminal()<CR>
 
