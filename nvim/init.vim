@@ -16,9 +16,10 @@
 " ####### Sane settings  #######
 syntax on
 
+
 set shell=/bin/zsh
 let $SHELL = "/bin/zsh"
-"set filetype=
+set nohlsearch
 set mouse=a
 set hidden
 set noerrorbells
@@ -80,7 +81,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
-
+Plug 'kevinoid/vim-jsonc'
 "themes
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
@@ -238,8 +239,8 @@ let g:coc_global_extensions = [
       \ 'coc-spell-checker',
       \ 'coc-emoji',
       \ 'coc-tsserver',
-      \ 'coc-json',
       \ 'coc-html',
+      \ 'coc-json',
       \ 'coc-clangd',
       \ 'coc-sh',
       \ 'coc-tag'
@@ -260,6 +261,7 @@ endif
       "\'coc-marketplace',
       "\'coc-syntax',
       "\'coc-snippets',
+
 
 
 " ####### Coc-settings   #######
@@ -431,4 +433,3 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
   source $HOME/myDotFiles/nvim/myVimScripts/WinMove.vim
   source $HOME/myDotFiles/nvim/myVimScripts/myTerminal.vim
   source $HOME/myDotFiles/nvim/myVimScripts/pdfPreview.vim
-
