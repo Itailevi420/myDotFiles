@@ -62,6 +62,11 @@
     }
   },
 
+  "coc.source.emoji.filetypes": ["vimwiki", "markdown"],
+  //"coc.source.emoji.triggerCharacters": [":"],
+  //"coc.source.emoji.priority": 0,
+  "coc.source.word.priority": 1,
+
   "diagnostic.virtualText": false,
   "clangd.path": "/home/itai/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"
 }

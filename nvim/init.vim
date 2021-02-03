@@ -15,6 +15,8 @@
 "
 " ####### Sane settings  #######
 syntax on
+set nocompatible
+filetype plugin on
 
 
 set shell=/bin/zsh
@@ -80,6 +82,8 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'kevinoid/vim-jsonc'
+Plug 'dbeniamine/cheat.sh-vim'
+
 "themes
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
@@ -218,14 +222,20 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 " ###### VimWiki #######
 " vim wiki settings
-filetype plugin on
-let wiki = {'path': '~/vimwiki',
+let g:vimwiki_root = $HOME . '/Documents/Wiki'
+let g:vimwiki_global_ext = 0
+let wiki = {'path': $HOME . '/Documents/Wiki',
            \ 'syntax': 'markdown', 'ext': '.md'}
 let wiki.template_default = 'default'
 let wiki.template_ext = '.html'
-let wiki.nested_syntaxes = {'python': 'python', 'bash': 'sh', 'ts':'typescript'}
+let wiki.nested_syntaxes = {
+      \ 'js': 'javascript',
+      \ 'jsx': 'javascriptreact',
+      \ 'tsx': 'typescriptreact' ,
+      \ 'python': 'python',
+      \ 'bash': 'sh',
+      \ 'ts':'typescript'}
 let g:vimwiki_list = [wiki]
-
 
 " ######## IndentLinePlugIn ########
 let g:indentLine_char_list = ['▏','▏','▏','▏', '¦', '┆', '┊']
@@ -434,7 +444,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 augroup jsonConceal
   autocmd!
-  autocmd Filetype json
+  autocmd Filetype json,jsonc
   \ let g:indentLine_setConceal = 0 |
   \ let g:vim_json_syntax_conceal = 0
 augroup END
