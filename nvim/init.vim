@@ -76,11 +76,12 @@ Plug 'vimwiki/vimwiki'         "my personal Wiki
 Plug 'jiangmiao/auto-pairs'
 Plug 'machakann/vim-sandwich'
 Plug 'andymass/vim-matchup'
-Plug 'pangloss/vim-javascript' " syntax highlight
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jparise/vim-graphql'
+"Plug 'pangloss/vim-javascript' " syntax highlight
+"Plug 'leafgarland/typescript-vim'
+"Plug 'peitalin/vim-jsx-typescript'
+"Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+"Plug 'jparise/vim-graphql'
+Plug 'sheerun/vim-polyglot'
 Plug 'kevinoid/vim-jsonc'
 Plug 'dbeniamine/cheat.sh-vim'
 
@@ -251,6 +252,7 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-clangd',
       \ 'coc-sh',
+      \ 'coc-omnisharp',
       \ 'coc-tag'
       \ ]
 
