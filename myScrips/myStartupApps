@@ -1,0 +1,14 @@
+#! /bin/bash
+xfce4-terminal > /dev/null 2>&1 &
+disown
+sleep 1
+thunderbird > /dev/null 2>&1 &
+disown
+sleep 1
+google-chrome-stable > /dev/null 2>&1 &
+disown
+sleep 1
+wmctrl -r 'Mozilla Thunderbird' -t 6
+wmctrl -r 'Terminal' -t 1
+wmctrl -r 'Chrome' -t 0
+
