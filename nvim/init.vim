@@ -14,6 +14,8 @@
 "                       /_/_/ /_/_/\__(_)___/_/_/ /_/ /_/
 "
 " ####### Sane settings  #######
+if !exists('g:vscode')
+
 syntax on
 set nocompatible
 filetype plugin on
@@ -60,6 +62,7 @@ augroup END
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'voldikss/vim-floaterm'
 Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
@@ -436,7 +439,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 
 
-" ######## My Vim Functions ########
+" ####### My Vim Functions ########
   "source $HOME/.config/nvim/myVimScripts/MaximizeToggle.vim
   source $HOME/myDotFiles/nvim/myVimScripts/TrimWhitespace.vim
   source $HOME/myDotFiles/nvim/myVimScripts/ExeMacroOVR.vim
@@ -450,3 +453,5 @@ augroup jsonConceal
   \ let g:indentLine_setConceal = 0 |
   \ let g:vim_json_syntax_conceal = 0
 augroup END
+
+endif
