@@ -8,13 +8,12 @@
     "less",
     "scss",
     "json",
+    "jsonc",
     "graphql",
     "markdown",
     "vue",
     "yaml",
-    "html",
-    "c",
-    "c++"
+    "html"
   ],
   "tsserver.formatOnType": true,
   "coc.preferences.formatOnType": true,
@@ -27,6 +26,7 @@
   "explorer.previewAction.onHover": false,
   "explorer.icon.enableNerdfont": true,
   "explorer.width": 30,
+  "explorer.file.showHiddenFiles": true,
 
   "cSpell.userWords": [
     "Flowbiz",
@@ -66,6 +66,12 @@
   //"coc.source.emoji.triggerCharacters": [":"],
   //"coc.source.emoji.priority": 0,
   "coc.source.word.enable": false,
+
+  "snippets.extends": {
+    "cpp": ["c"],
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
 
   "diagnostic.virtualText": false,
   "clangd.path": "/home/itai/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"

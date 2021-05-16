@@ -62,6 +62,7 @@ augroup END
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'dsznajder/vscode-es7-javascript-react-snippets', { 'do': 'yarn install --frozen-lockfile && yarn compile' }
 Plug 'voldikss/vim-floaterm'
 Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'tpope/vim-fugitive'
@@ -250,12 +251,14 @@ let g:coc_global_extensions = [
       \ 'coc-vimlsp',
       \ 'coc-spell-checker',
       \ 'coc-emoji',
+      \ 'coc-snippets',
       \ 'coc-tsserver',
       \ 'coc-html',
       \ 'coc-json',
       \ 'coc-clangd',
       \ 'coc-sh',
       \ 'coc-omnisharp',
+      \ 'coc-fzf-preview',
       \ 'coc-tag'
       \ ]
 
@@ -279,7 +282,11 @@ endif
 
 " ####### Coc-settings   #######
 
-
+"----------Coc-snippets--------------
+"
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+"----------Coc-snippets--------------
 
 augroup CocExplorer
   autocmd!
@@ -294,6 +301,8 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -312,7 +321,7 @@ endif
 nmap <Leader>f [fzf-p]
 xmap <Leader>f [fzf-p]
 
-nnoremap <silent> [fzf-p]p     :<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>
+nnoremap <silent> [fzf-p]p     :<C-u>CocCommand fzf-preview.FromResources git project_mru <CR>
 nnoremap <silent> [fzf-p]gs    :<C-u>CocCommand fzf-preview.GitStatus<CR>
 nnoremap <silent> [fzf-p]ga    :<C-u>CocCommand fzf-preview.GitActions<CR>
 nnoremap <silent> [fzf-p]b     :<C-u>CocCommand fzf-preview.Buffers<CR>
@@ -455,3 +464,9 @@ augroup jsonConceal
 augroup END
 
 endif
+
+
+
+
+
+
