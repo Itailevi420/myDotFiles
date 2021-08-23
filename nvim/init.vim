@@ -124,6 +124,14 @@ augroup myCursorLine
   autocmd InsertLeave * highlight CursorLine ctermbg=Black ctermfg=none guibg=#161617 guifg=none
 augroup END
 
+nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
+nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
+nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
+
+nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
+
 let g:python3_host_prog='/usr/bin/python3'
 
 let g:airline_theme='dark'
@@ -245,6 +253,10 @@ let g:vimwiki_list = [wiki]
 " ######## IndentLinePlugIn ########
 let g:indentLine_char_list = ['▏','▏','▏','▏', '¦', '┆', '┊']
 
+" ######## Fzf ########
+
+nnoremap <C-p> :GFiles<CR>
+
 " ####### Coc-extentions #######
 let g:coc_global_extensions = [
       \ 'coc-explorer',
@@ -258,7 +270,6 @@ let g:coc_global_extensions = [
       \ 'coc-clangd',
       \ 'coc-sh',
       \ 'coc-omnisharp',
-      \ 'coc-fzf-preview',
       \ 'coc-tag'
       \ ]
 
@@ -270,6 +281,7 @@ if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
       "\'coc-highlight',
+      " \ 'coc-fzf-preview',
       "\'coc-python',
       "\'coc-git',
       "\'coc-fish',
