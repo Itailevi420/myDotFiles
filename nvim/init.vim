@@ -88,7 +88,7 @@ Plug 'andymass/vim-matchup'
 Plug 'sheerun/vim-polyglot'
 Plug 'kevinoid/vim-jsonc'
 Plug 'dbeniamine/cheat.sh-vim'
-
+Plug 'sunaku/vim-shortcut'
 "themes
 Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
@@ -124,13 +124,14 @@ augroup myCursorLine
   autocmd InsertLeave * highlight CursorLine ctermbg=Black ctermfg=none guibg=#161617 guifg=none
 augroup END
 
+" ####### Some keymaps  #######
 nnoremap <silent> [oh :call gruvbox#hls_show()<CR>
 nnoremap <silent> ]oh :call gruvbox#hls_hide()<CR>
 nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
 
-nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
-nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
-nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
+"nnoremap * :let @/ = ""<CR>:call gruvbox#hls_show()<CR>*
+"nnoremap / :let @/ = ""<CR>:call gruvbox#hls_show()<CR>/
+"nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
 let g:python3_host_prog='/usr/bin/python3'
 
@@ -292,6 +293,7 @@ endif
 
 
 
+      "
 " ####### Coc-settings   #######
 
 "----------Coc-snippets--------------
@@ -328,7 +330,6 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-
 " ####### Coc-FZF-preview #######
 nmap <Leader>f [fzf-p]
 xmap <Leader>f [fzf-p]
@@ -355,7 +356,7 @@ let g:fzf_preview_command = 'bat --color=always --theme=gruvbox --plain --number
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 nnoremap <leader>p :Prettier<CR>
 
-"----Coc-Prettier ----------------------------"
+" ####### Coc-Prettier ----------------------------"
 
   " GoTo code navigation.
   nmap <leader>gd <Plug>(coc-definition)
@@ -391,7 +392,7 @@ augroup cursorHighlight
   autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
 
-
+" ####### Coc keymaps#######
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -474,6 +475,7 @@ augroup jsonConceal
   \ let g:indentLine_setConceal = 0 |
   \ let g:vim_json_syntax_conceal = 0
 augroup END
+
 
 endif
 
