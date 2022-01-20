@@ -271,6 +271,7 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-clangd',
       \ 'coc-sh',
+      \ 'coc-fzf-preview',
       \ 'coc-omnisharp',
       \ 'coc-tag'
       \ ]
@@ -283,7 +284,6 @@ if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
       "\'coc-highlight',
-      " \ 'coc-fzf-preview',
       "\'coc-python',
       "\'coc-git',
       "\'coc-fish',
