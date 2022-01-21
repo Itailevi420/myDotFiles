@@ -69,7 +69,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
@@ -335,7 +335,8 @@ endif
 nmap <Leader>f [fzf-p]
 xmap <Leader>f [fzf-p]
 
-nnoremap <silent> [fzf-p]p     :<C-u>CocCommand fzf-preview.FromResources git project_mru <CR>
+nnoremap <silent> [fzf-p]f     :<C-u>CocCommand fzf-preview.DirectoryFiles<CR>
+nnoremap <silent> [fzf-p]p     :<C-u>CocCommand fzf-preview.FromResources git project_mru<CR>
 nnoremap <silent> [fzf-p]gs    :<C-u>CocCommand fzf-preview.GitStatus<CR>
 nnoremap <silent> [fzf-p]ga    :<C-u>CocCommand fzf-preview.GitActions<CR>
 nnoremap <silent> [fzf-p]b     :<C-u>CocCommand fzf-preview.Buffers<CR>
@@ -351,7 +352,8 @@ nnoremap <silent> [fzf-p]t     :<C-u>CocCommand fzf-preview.BufferTags<CR>
 nnoremap <silent> [fzf-p]q     :<C-u>CocCommand fzf-preview.QuickFix<CR>
 nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>
 
-let g:fzf_preview_command = 'bat --color=always --theme=gruvbox --plain --number {-1}'
+let g:fzf_preview_command = 'bat --color=always --theme=gruvbox-dark --plain --number {-1}'
+let g:fzf_preview_fzf_preview_window_option = 'down:80%'
 "----Coc-Prettier ----------------------------"
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
