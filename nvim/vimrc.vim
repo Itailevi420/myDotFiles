@@ -237,9 +237,9 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 
 " ###### VimWiki #######
 " vim wiki settings
-let g:vimwiki_root = $HOME . '/Documents/Wiki'
+let g:vimwiki_root = $HOME . '/vimwiki'
 let g:vimwiki_global_ext = 0
-let wiki = {'path': $HOME . '/Documents/Wiki',
+let wiki = {'path': $HOME . '/vimwiki',
            \ 'syntax': 'markdown', 'ext': '.md'}
 let wiki.template_default = 'default'
 let wiki.template_ext = '.html'
@@ -252,12 +252,19 @@ let wiki.nested_syntaxes = {
       \ 'ts':'typescript'}
 let g:vimwiki_list = [wiki]
 
+"## fixing tab completion in vimwiki .md files d20220130
+" but this disable table_mappings
+" but if we want we can use this OPTION insted of <tab> and for auto
+" completion use CTRL-n , CTRL-p
+let g:vimwiki_key_mappings = { 'table_mappings': 0 } " disable's tab operations
+
+
+
 " ######## IndentLinePlugIn ########
 let g:indentLine_char_list = ['▏','▏','▏','▏', '¦', '┆', '┊']
 
 " ######## Fzf ########
 
-nnoremap <C-p> :GFiles<CR>
 
 " ####### Coc-extentions #######
 let g:coc_global_extensions = [
@@ -335,7 +342,7 @@ endif
 nmap <Leader>f [fzf-p]
 xmap <Leader>f [fzf-p]
 
-nnoremap <silent> [fzf-p]f     :<C-u>CocCommand fzf-preview.DirectoryFiles<CR>
+nnoremap <silent> <C-p>  :<C-u>CocCommand fzf-preview.DirectoryFiles<CR>
 nnoremap <silent> [fzf-p]p     :<C-u>CocCommand fzf-preview.FromResources git project_mru<CR>
 nnoremap <silent> [fzf-p]gs    :<C-u>CocCommand fzf-preview.GitStatus<CR>
 nnoremap <silent> [fzf-p]ga    :<C-u>CocCommand fzf-preview.GitActions<CR>
