@@ -25,6 +25,7 @@ filetype plugin on
 set shell=/bin/zsh
 let $SHELL = "/bin/zsh"
 set nohlsearch
+"set ignorecase
 set mouse=a
 set hidden
 set noerrorbells
@@ -32,7 +33,8 @@ set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
-set nu relativenumber
+set nu
+"set nu relativenumber
 set nowrap
 set smartcase
 set noswapfile
@@ -135,6 +137,7 @@ nnoremap <silent> coh :call gruvbox#hls_toggle()<CR>
 "nnoremap ? :let @/ = ""<CR>:call gruvbox#hls_show()<CR>?
 
 let g:python3_host_prog='/usr/bin/python3'
+let g:python_host_prog='/usr/bin/python2'
 
 let g:airline_theme='dark'
 
@@ -158,6 +161,11 @@ vnoremap K :m '<-2<CR>gv=gv
 " Deletes a line in visual mode by pressing ["X"]
 vnoremap X "_d
 inoremap <C-c> <esc>
+" Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
+nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " ####### plugin conf    #######
 
@@ -361,6 +369,9 @@ nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>
 
 let g:fzf_preview_command = 'bat --color=always --theme=gruvbox-dark --plain --number {-1}'
 let g:fzf_preview_fzf_preview_window_option = 'down:80%'
+
+" Cache directory for mru and mrw
+let g:fzf_preview_cache_directory = expand('~/.cache/vim/fzf_preview')
 "----Coc-Prettier ----------------------------"
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
