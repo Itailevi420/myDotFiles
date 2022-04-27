@@ -65,7 +65,6 @@ augroup END
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'dsznajder/vscode-es7-javascript-react-snippets', { 'do': 'yarn install --frozen-lockfile && yarn compile' }
 Plug 'voldikss/vim-floaterm'
 Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'tpope/vim-fugitive'
