@@ -93,7 +93,8 @@ Plug 'dbeniamine/cheat.sh-vim'
 Plug 'sunaku/vim-shortcut'
 "themes
 Plug 'morhetz/gruvbox'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
+Plug 'adelarsq/vim-devicons-emoji'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()

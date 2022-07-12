@@ -1,15 +1,25 @@
 #! /bin/bash
 thunderbird > /dev/null 2>&1 &
+sleep 1
+google-chrome-stable > /dev/null 2>&1 &
 sleep 2
 discord > /dev/null 2>&1 &
 sleep 2
-xfce4-terminal > /dev/null 2>&1 &
-sleep 2
-/home/itai/.local/share/applications/chrome-itai.desktop > /dev/null 2>&1 &
-sleep 2
-wmctrl -r 'Terminal' -t 1
 wmctrl -r 'Chrome' -t 0
-sleep 10
-wmctrl -r 'Discord' -t 5
-wmctrl -r 'Mozilla Thunderbird' -t 6
+sleep 2
+wmctrl -r 'Mozilla Thunderbird' -t 2
+sleep 2
+wmctrl -r 'Discord' -t 3
 
+#evolution > /dev/null 2>&1 &
+#sleep 2
+#sleep 2
+#x3270 > /dev/null 2>&1 &
+#sleep 1
+#xfce4-terminal > /dev/null 2>&1 &
+#sleep 2
+#/home/itai/.local/share/applications/chrome-itai.desktop > /dev/null 2>&1 &
+
+
+#wmctrl -r 'Terminal' -t 1
+#wmctrl -r 'evolution' -t 2
