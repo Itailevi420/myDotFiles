@@ -38,7 +38,10 @@ set nu
 set nowrap
 set smartcase
 set noswapfile
+" Some servers have issues with backup files, see #649. coc.nvim github
 set nobackup
+set nowritebackup
+
 set undodir=~/.local/share/nvim/undodir
 set undofile
 set incsearch
@@ -65,6 +68,7 @@ augroup END
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+"Plug 'ipoddubny/asterisk-vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'tpope/vim-fugitive'
@@ -94,7 +98,7 @@ Plug 'sunaku/vim-shortcut'
 "themes
 Plug 'morhetz/gruvbox'
 "Plug 'ryanoasis/vim-devicons'
-Plug 'adelarsq/vim-devicons-emoji'
+"Plug 'adelarsq/vim-devicons-emoji'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -323,21 +327,21 @@ augroup CocExplorer
   autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 augroup END
 
-" Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-
 
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+  return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
+
+" Insert <tab> when previous text is space, refresh completion if not.
+inoremap <silent><expr> <TAB>
+\ coc#pum#visible() ? coc#pum#next(1):
+\ <SID>check_back_space() ? "\<Tab>" :
+\ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+
 
 " Use <c-space> to trigger completion.
 if has('nvim')
@@ -395,15 +399,13 @@ nnoremap <leader>e :CocCommand explorer<CR>
 
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . " " . expand('<cword>')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
@@ -441,7 +443,7 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Remap <C-f> and <C-b> for scroll float windows/popups.
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
