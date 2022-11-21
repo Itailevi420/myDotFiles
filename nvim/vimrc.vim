@@ -22,8 +22,8 @@ set nocompatible
 filetype plugin on
 
 
-set shell=/bin/zsh
-let $SHELL = "/bin/zsh"
+set shell=/bin/bash
+let $SHELL = "/bin/bash"
 set nohlsearch
 "set ignorecase
 set mouse=a
@@ -31,7 +31,7 @@ set hidden
 set noerrorbells
 set tabstop=2 softtabstop=2
 set shiftwidth=2
-set expandtab
+"set expandtab
 set smartindent
 set nu
 "set nu relativenumber
@@ -67,6 +67,27 @@ augroup myPlug
 augroup END
 
 call plug#begin('~/.local/share/nvim/plugged')
+
+"preview markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+"Mappings:
+"" normal/insert
+"<Plug>MarkdownPreview
+"<Plug>MarkdownPreviewStop
+"<Plug>MarkdownPreviewToggle
+
+"" example
+"nmap <C-s> <Plug>MarkdownPreview
+"nmap <M-s> <Plug>MarkdownPreviewStop
+"nmap <C-p> <Plug>MarkdownPreviewToggle
+
+"Commands:
+"" Start the preview
+":MarkdownPreview
+
+"" Stop the preview"
+":MarkdownPreviewStop
+
 
 "Plug 'ipoddubny/asterisk-vim'
 Plug 'voldikss/vim-floaterm'
@@ -109,7 +130,7 @@ set splitbelow
 set splitright
 
 " Give more space for displaying messages.
-set cmdheight=2
+"set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.

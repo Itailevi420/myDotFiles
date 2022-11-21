@@ -1,0 +1,1 @@
+--preview 'tree -C -L 2 {} | head -250'
