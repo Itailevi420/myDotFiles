@@ -29,10 +29,7 @@ set nohlsearch
 set mouse=a
 set hidden
 set noerrorbells
-set tabstop=2 softtabstop=2
-set shiftwidth=2
-"set expandtab
-set smartindent
+set tabstop=2 softtabstop=2 autoindent expandtab smartindent shiftwidth=2
 set nu
 "set nu relativenumber
 set nowrap
@@ -393,7 +390,9 @@ nnoremap <silent> [fzf-p]t     :<C-u>CocCommand fzf-preview.BufferTags<CR>
 nnoremap <silent> [fzf-p]q     :<C-u>CocCommand fzf-preview.QuickFix<CR>
 nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>
 
-let g:fzf_preview_command = 'bat --color=always --theme=gruvbox-dark --plain --number {-1}'
+" changed "bat" to "batcat" so bash would find the command
+" in debian or ubuntu based systems the name of the "bat" command is batcat.
+let g:fzf_preview_command = 'batcat --color=always --theme=gruvbox-dark --plain --number {-1}'
 let g:fzf_preview_fzf_preview_window_option = 'down:80%'
 
 " Cache directory for mru and mrw
@@ -511,3 +510,7 @@ augroup jsonConceal
   \ let g:indentLine_setConceal = 0 |
   \ let g:vim_json_syntax_conceal = 0
 augroup END
+
+"TODO:
+"   port config to lua
+"   add wichkey
