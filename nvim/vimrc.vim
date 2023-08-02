@@ -22,8 +22,8 @@ set nocompatible
 filetype plugin on
 
 
-set shell=/bin/bash
-let $SHELL = "/bin/bash"
+set shell=/usr/bin/zsh
+let $SHELL = "/usr/bin/zsh"
 set nohlsearch
 "set ignorecase
 set mouse=a
