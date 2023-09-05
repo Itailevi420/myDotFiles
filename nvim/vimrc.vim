@@ -95,7 +95,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
 Plug 'junegunn/goyo.vim'
 Plug 'moll/vim-bbye'
 Plug 'szw/vim-maximizer' "Maximizes and restores the current window in Vim.
