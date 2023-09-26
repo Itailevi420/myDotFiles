@@ -5,8 +5,9 @@ augroup myTerminal
 augroup END
 
 function! OpenTerminal()
-  split term://fish
+  split term://zsh
   resize 10
+  set nonumber
 endfunction
 
 " open terminal on ctrl+t
