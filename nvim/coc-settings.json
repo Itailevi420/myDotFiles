@@ -28,13 +28,17 @@
   "explorer.file.showHiddenFiles": true,
   "cSpell.userWords": [
     "Flowbiz",
+    "Gobuster",
     "Itai",
     "Nemo",
     "Nimo",
     "browserslist",
+    "cmdlets",
     "debbug",
     "frontmatter",
-    "gruvbox"
+    "gruvbox",
+    "pentesting",
+    "wordlist"
   ],
   "cSpell.enabledLanguageIds": [
     "csharp",

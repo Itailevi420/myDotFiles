@@ -20,7 +20,7 @@
 syntax on
 set nocompatible
 filetype plugin on
-
+"Without them, VimWiki will not work properly.
 
 set shell=/usr/bin/zsh
 let $SHELL = "/usr/bin/zsh"
@@ -308,6 +308,7 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-sh',
       \ 'coc-fzf-preview',
+      \ 'coc-powershell',
       \ 'coc-omnisharp',
       \ 'coc-tag'
       \ ]
