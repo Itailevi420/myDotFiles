@@ -310,6 +310,7 @@ let g:coc_global_extensions = [
       \ 'coc-fzf-preview',
       \ 'coc-powershell',
       \ 'coc-omnisharp',
+      \ 'coc-python',
       \ 'coc-tag'
       \ ]
 
