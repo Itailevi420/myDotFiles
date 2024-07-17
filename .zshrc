@@ -4,15 +4,20 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="kphoen"
-#ZSH_THEME="spaceship"
-# see https://github.com/spaceship-prompt/spaceship-prompt
-#
+#ZSH_THEME="duellj"
+#ZSH_THEME="re5et"
+#ZSH_THEME="kphoen"
+#ZSH_THEME="funky"
+#ZSH_THEME="blinks"
+
+#bindkey -v
+bindkey -e
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -73,17 +78,25 @@ ZSH_THEME="kphoen"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git zsh-autosuggestions z vi-mode)
 plugins=(
-  #fzf
-  git
-  zsh-autosuggestions
+  zsh-vi-mode
   z
-  vi-mode
+  zsh-autosuggestions
   zsh-syntax-highlighting
+  fzf
+  ssh-agent
+  autoupdate
+  forgit
 )
 
-source $ZSH/oh-my-zsh.sh
+
+#IMPORTANT: put these settings before the line that sources oh-my-zsh
+#agent-forwarding
+#To enable agent forwarding support add the following to your zshrc file:
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+#zstyle :omz:plugins:ssh-agent identities ~/.config/ssh/id_rsa ~/.config/ssh/id_rsa2 ~/.config/ssh/id_github
+# which can be simplified to
+zstyle :omz:plugins:ssh-agent identities ~/.ssh/{id_ecdsa,id_ed25519}
 
 
 # User configuration
@@ -108,9 +121,7 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-  eval "$(starship init zsh)"
+
+
